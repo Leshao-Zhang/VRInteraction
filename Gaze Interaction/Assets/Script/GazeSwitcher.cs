@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,29 +8,25 @@ public class GazeSwitcher : MonoBehaviour
     // Start is called before the first frame update
     RaycastHit hit;
     int LayerMask = 1 << 9;
-    GameObject loading;
-    bool staring = false;
-    Image imageComp;
     public float progressSpeed = 0.5f;
+    public GameObject loadingImage;
+    bool staring = false;
+    Image imageComp;    
     bool triggered = false;
+    public GameObject canvas;
     //above do not change
 
     //add objects below
-    Light mylight;
-    GameObject switcher;
+    public Light theLight;
+    public GameObject switcher;
 
     // Start is called before the first frame update
     void Start()
     {
-        loading=GameObject.Find("loading1");
-        loading.SetActive(false);
-        imageComp = loading.GetComponent<Image>();
+        loadingImage.SetActive(false);
+        imageComp = loadingImage.GetComponent<Image>();
         imageComp.fillAmount = 0;
         //above do not change
-
-        //initialize objects
-        mylight = GameObject.Find("Point Light").GetComponent<Light>();
-        switcher = GameObject.Find("Switcher");
     }
 
     // Update is called once per frame
@@ -40,7 +36,7 @@ public class GazeSwitcher : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.yellow);
             Debug.Log("Did Hit");
-            staring = true;        
+            staring = true;
         }
         else
         {
@@ -53,17 +49,18 @@ public class GazeSwitcher : MonoBehaviour
         if (staring && imageComp.fillAmount < 1)
         {
             imageComp.fillAmount += progressSpeed * Time.deltaTime;
-            loading.SetActive(true);
+            loadingImage.SetActive(true);
+            canvas.transform.position = Vector3.Lerp(transform.position, hit.point, 0.9f); //put the indicator in front of the object
         }
         if (imageComp.fillAmount >= 1)
         {
-            loading.SetActive(false);
+            loadingImage.SetActive(false);
             if (!triggered)
             {
                 //here we can set different rule for different object.
                 if (hit.transform.gameObject.Equals(switcher))
                 {
-                    mylight.enabled = !mylight.enabled;
+                    theLight.enabled = !theLight.enabled;
                 }
                 /**
                  * For example:
