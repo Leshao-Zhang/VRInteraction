@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,7 +51,7 @@ public class GazeSwitcher : MonoBehaviour
             imageComp.fillAmount += progressSpeed * Time.deltaTime;
             loadingImage.SetActive(true);
             canvas.transform.position = Vector3.Lerp(transform.position, hit.point, 0.9f); //put the indicator in front of the object
-            canvas.transform.rotation = transform.rotation; 
+            canvas.transform.rotation = transform.rotation;
         }
         if (imageComp.fillAmount >= 1)
         {
