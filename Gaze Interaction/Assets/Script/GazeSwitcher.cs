@@ -7,11 +7,11 @@ public class GazeSwitcher : MonoBehaviour
 {
     // Start is called before the first frame update
     RaycastHit hit;
-    int LayerMask = 1 << 9;
+    int LayerMask = 1 << 10;
     public float progressSpeed = 0.5f;
     public GameObject loadingImage;
     bool staring = false;
-    Image imageComp;    
+    Image imageComp;
     bool triggered = false;
     public GameObject canvas;
     //above do not change
@@ -51,6 +51,7 @@ public class GazeSwitcher : MonoBehaviour
             imageComp.fillAmount += progressSpeed * Time.deltaTime;
             loadingImage.SetActive(true);
             canvas.transform.position = Vector3.Lerp(transform.position, hit.point, 0.9f); //put the indicator in front of the object
+            canvas.transform.rotation = transform.rotation; 
         }
         if (imageComp.fillAmount >= 1)
         {
