@@ -7,7 +7,7 @@ public class GazeSwitcher : MonoBehaviour
 {
     // Start is called before the first frame update
     RaycastHit hit;
-    public int layer=9;
+    public int interactiveLayer=9;
     int LayerMask;
     public float progressSpeed = 0.5f;
     public GameObject loadingImage;
@@ -24,7 +24,7 @@ public class GazeSwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LayerMask = 1 << layer;
+        LayerMask = 1 << interactiveLayer;
         loadingImage.SetActive(false);
         imageComp = loadingImage.GetComponent<Image>();
         imageComp.fillAmount = 0;
