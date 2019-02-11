@@ -5,7 +5,7 @@ Very Easy to use.
 
  - Create a new 3D project. 
 
- - Import this Github to your assets folder. 
+ - Import this repository to your assets folder. 
 
  - Open the scene in the folder. 
 
