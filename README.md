@@ -3,13 +3,13 @@ VR Interaction Implement for Unity3D
 
 Very Easy to use. 
 
-  Create a new 3D project. 
+ - Create a new 3D project. 
 
-  Import this Github to your assets. 
+ - Import this Github to your assets. 
 
-  Open the example scene in the folder. 
+ - Open the example scene in the folder. 
 
-  Play.
+ - Play.
 
 
   
